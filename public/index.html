@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Calculator</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="container">
+        <div class="title">Microservice Calculator</div>
+        <input type="number" id="number1" class="display" placeholder="First Number">
+        <input type="number" id="number2" class="display" placeholder="Second Number">
+        <select name="operations" id="operations" >
+            <option value="Addition">Addition</option>
+            <option value="Substraction">Substraction</option>
+            <option value="Multiplication">Multiplication</option>
+            <option value="Division">Division</option>
+            <option value="SquareRoot">Square Root</option>
+            <option value="Exponential">Exponential</option>
+            <option value="Modulo">Modulo</option>
+        </select>
+        <input type="number" id="result" class="display" placeholder="Result" disabled>
+        <button class="calculate" id="submit">Calculate</button>
+    </div>
+
+    <script src="index.js" defer></script>
+</body>
+</html>

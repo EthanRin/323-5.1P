@@ -1,0 +1,17 @@
+{
+  "name": "4.2c",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2",
+    "math": "^0.0.3",
+    "path": "^0.12.7"
+  }
+}
