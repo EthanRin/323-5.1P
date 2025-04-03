@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  web: 
+    build: .
+    container_name: node_app_5_1_p
+    ports: 
+      - "5500:5500"
+    volumes:
+     - .:/app
+    working_dir: /app
+    command: node server.js

@@ -2,7 +2,8 @@ const express = require('express');
 const path = require('path')
 
 const app = express();
-const port = 5500;
+const PORT = 5500;
+const HOST = "0.0.0.0";
 
 const addition = (n1, n2) => {
     return n1+n2;
@@ -79,6 +80,6 @@ app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 })
 
-app.listen(port, () => {
-    console.log(`Server running at port:${port}`)
+app.listen(PORT, HOST, () => {
+    console.log(`Server running at port:${PORT}`)
 })

@@ -1,13 +1,13 @@
 {
-  "name": "4.2c",
+  "name": "5.1P",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Node Js with Docker",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Ethan R",
   "license": "ISC",
   "dependencies": {
     "express": "^4.21.2",
