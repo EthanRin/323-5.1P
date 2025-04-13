@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubernetes-app-deloyment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: kube-app
+  template:
+    metadata:
+      labels:
+        app: kube-app
+    spec:
+      containers:
+      - name: kube-app
+        image: ethanrin/51p-kubernetes:latest
+        ports:
+        - containerPort: 5500
