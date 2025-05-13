@@ -1,0 +1,30 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: mongo-backup
+spec:
+  schedule: "30 17 * * *" 
+  timeZone: "Australia/Sydney"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: mongo-backup
+            image: mongo:6
+            command: ["/bin/sh", "-c"]
+            args:
+              - |
+                BACKUP_DIR=/data/db/backup/$(date +%F)
+                mkdir -p "$BACKUP_DIR" && \
+                mongodump --host mongo --out="$BACKUP_DIR" && \
+                tar -czf "$BACKUP_DIR.tar.gz" -C /data/db/backup $(date +%F) && \
+                echo "Backup complete at $BACKUP_DIR.tar.gz"
+            volumeMounts:
+            - name: mongo-storage
+              mountPath: /data/db
+          restartPolicy: OnFailure
+          volumes:
+          - name: mongo-storage
+            persistentVolumeClaim:
+              claimName: mongo-pvc

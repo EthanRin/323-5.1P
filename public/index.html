@@ -6,7 +6,7 @@
     <title>Enhanced Calculator</title>
     <link rel="stylesheet" href="index.css">
 </head>
-<body>
+<body class="home">
     <div class="container">
         <div class="title">Microservice Calculator</div>
         <input type="number" id="number1" class="display" placeholder="First Number">
@@ -22,6 +22,7 @@
         </select>
         <input type="number" id="result" class="display" placeholder="Result" disabled>
         <button class="calculate" id="submit">Calculate</button>
+        <button class="calculate" onclick="window.location.href='calculations.html'">View History</button>
     </div>
 
     <script src="index.js" defer></script>

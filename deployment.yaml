@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: kubernetes-app-deloyment
+  name: kubernetes-app-deployment
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: kube-app
@@ -16,4 +16,25 @@ spec:
       - name: kube-app
         image: ethanrin/51p-kubernetes:latest
         ports:
-        - containerPort: 5500
+        - containerPort: 5501
+        env:
+        - name: DB_TYPE
+          value: mongodb
+        - name: DB_HOST
+          value: mongo 
+        - name: DB_PORT
+          value: "27017"
+        - name: DB_NAME
+          value: myDB
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: mongo-cred
+              key: mongo-user
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mongo-cred
+              key: mongo-password
+        - name: MONGO_URI
+          value: "mongodb://$(DB_USER):$(DB_PASSWORD)@mongo:27017/myDB"

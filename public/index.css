@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-body {
+.home {
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
@@ -60,7 +60,20 @@ body {
     margin-right: auto;
 }
 
-.calculate:hover {
+.history {
+    grid-column: span 4;
+    padding: 10px;
+    font-size: 10px;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: block;
+}
+
+.history:hover {
     background-color: #ff3333;
 }
 
@@ -76,3 +89,8 @@ body {
     color: red;
     text-align: center;
 }
+
+.calc { 
+margin-bottom: 10px; 
+border: 1px solid #ccc; 
+padding: 10px; }

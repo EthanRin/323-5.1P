@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculations History</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body style="padding: 20px;">
+  <h1>Calculations History</h1>
+  <button  onclick="window.location.href='/'" class="history"><- Home</button>
+  <div id="calculations" style="margin-top: 10px;"></div>
+
+  <script>
+    async function fetchCalculations() {
+      const response = await fetch('/calculations');
+      const data = await response.json();
+      const container = document.getElementById('calculations');
+      container.innerHTML = '';
+
+      data.forEach(calc => {
+        const div = document.createElement('div');
+        div.className = 'calc';
+        div.innerHTML = `
+          <strong>${calc.operation}</strong>: ${calc.number1} and ${calc.number2} = ${calc.result}
+          <br><small>${new Date(calc.timestamp).toLocaleString()}</small>
+          <button class="history" onclick="deleteCalculation('${calc._id}')">Delete</button>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    async function deleteCalculation(id) {
+        console.log("Deleting document with ID: ", id)    
+        const res = await fetch(`/calculations/${id}`, { method: 'DELETE' });
+        const result = await res.json();
+        alert(result.message);
+        fetchCalculations();
+    }
+
+    fetchCalculations();
+  </script>
+</body>
+</html>
